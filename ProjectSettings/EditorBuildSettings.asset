@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TimeBoundScene.unity
     guid: 17dc2d5edf65a428a9f72a0d9093a8f8
+  - enabled: 1
+    path: Assets/Scenes/HardScene.unity
+    guid: a13f6c0f221a7431084cb6f617a69be7
   m_configObjects: {}

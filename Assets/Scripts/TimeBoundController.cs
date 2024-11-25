@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TimeBoundController : MonoBehaviour
+public class TimeBoundController : MonoBehaviour, IGameModeController
 {
     public Camera cam;
     public GameObject egg;
@@ -93,6 +93,10 @@ public class TimeBoundController : MonoBehaviour
             dragons[dragonIndex].GetComponent<DragonScript>().LayTimeEgg();
             yield return new WaitForSeconds(delayTime);
         }
+    }
+
+    public float GetCurrentStamina(){
+        return 1;
     }
 
 }

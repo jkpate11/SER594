@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StandardGameController : MonoBehaviour, IGameModeController
+public class HardModeController : MonoBehaviour, IGameModeController
 {
     public Camera cam;
     public GameObject egg;
@@ -11,10 +11,17 @@ public class StandardGameController : MonoBehaviour, IGameModeController
     public GameObject lifeIconPrefab; 
     public GameObject gameOverText;
     public GameObject restartButton;
+    public Slider staminaBar; 
     private float maxWidth;
     public GameObject[] dragons;
     Coroutine CODragonControl;
     Coroutine COLifeEgg;
+
+    public float maxStamina = 100f;
+    private float currentStamina;
+    public float staminaDrainRate = 20f; 
+    public float staminaRegenRate = 5f; 
+    private bool isDrainingStamina = false;
 
     void Start()
     {
@@ -31,6 +38,10 @@ public class StandardGameController : MonoBehaviour, IGameModeController
 
         InitializeLives();
 
+        currentStamina = maxStamina;
+        staminaBar.maxValue = maxStamina;
+        staminaBar.value = currentStamina;
+
         CODragonControl = StartCoroutine(dragonNormalEggLayingControl());
         COLifeEgg = StartCoroutine(dragonLifeEggLayingControl());
     }
@@ -45,6 +56,21 @@ public class StandardGameController : MonoBehaviour, IGameModeController
                 StopCoroutine(COLifeEgg);
             StartCoroutine(showEndGameMenu());
         }
+
+
+        if (Input.GetKey(KeyCode.LeftShift) && currentStamina > 0)
+        {
+            isDrainingStamina = true;
+            DrainStamina();
+        }
+        else
+        {
+            isDrainingStamina = false;
+            RegenerateStamina();
+        }
+
+        staminaBar.value = currentStamina;
+        
     }
 
     void InitializeLives()
@@ -83,8 +109,25 @@ public class StandardGameController : MonoBehaviour, IGameModeController
     }
 
     public float GetCurrentStamina(){
-        return 1;
+        return currentStamina;
     }
+
+    public void DrainStamina()
+    {
+        currentStamina -= staminaDrainRate * Time.deltaTime;
+        currentStamina = Mathf.Clamp(currentStamina, 0, maxStamina);
+    }
+
+    public void RegenerateStamina()
+    {
+        if (!isDrainingStamina && currentStamina < maxStamina)
+        {
+            currentStamina += staminaRegenRate * Time.deltaTime;
+            currentStamina = Mathf.Clamp(currentStamina, 0, maxStamina);
+        }
+    }
+
+
 
     IEnumerator showEndGameMenu()
     {
