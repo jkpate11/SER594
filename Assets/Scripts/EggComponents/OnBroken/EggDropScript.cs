@@ -7,7 +7,7 @@ public class EggDropScript : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if ((col.gameObject.tag == "Grass") || (col.gameObject.tag == "Destroyer"))
+        if ((col.gameObject.tag == "Ground") || (col.gameObject.tag == "Destroyer"))
         {
             GameObject gameController = GameObject.Find("GameController");
             if (gameController == null)

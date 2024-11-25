@@ -22,7 +22,7 @@ public class DestroyOnDrop : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        else if (col.gameObject.tag == "Grass")
+        else if (col.gameObject.tag == "Ground")
         {
             Vector3 spawnPosition = new Vector3( 
                 transform.position.x, 
