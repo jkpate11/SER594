@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: e144f331c9b4b1f448121ed52e8d646a
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - egg: {fileID: 8160866834217504523, guid: a61458b8076e98d458321f3f900f30c3, type: 3}
+  - lifeEgg: {fileID: 8160866834217504523, guid: 8b4fa1665dc1f9f44a680b2746fa2b76,
+      type: 3}
+  - virusEgg: {fileID: 8160866834217504523, guid: a61458b8076e98d458321f3f900f30c3,
+      type: 3}
+  - timeEgg: {fileID: 1349260507346832865, guid: f8989ca422da56947b24496c0e42584f,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
