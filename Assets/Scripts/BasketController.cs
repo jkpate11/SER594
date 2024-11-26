@@ -24,7 +24,7 @@ public class BasketController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.LeftShift) && GetStamina()>0) {
+        if (Input.GetKey(KeyCode.LeftShift) && GetStamina()>0.5) {
             Vector3 rawPosition = cam.ScreenToWorldPoint(Input.mousePosition);
             Vector3 targetPosition = new Vector3(rawPosition.x, 0.0f, 0.0f);
             float targetWidth = Mathf.Clamp(targetPosition.x, -maxWidth, maxWidth);
